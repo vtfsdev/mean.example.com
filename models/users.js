@@ -16,6 +16,20 @@ var Users = new Schema({
   },
   first_name: String,
   last_name: String,
+  hash: {
+    type: String,
+    required: [
+      true,   
+      'There was a problem creating your password'
+    ]
+  },
+  salt: {
+    type: String,
+    required: [
+      true, 
+      'There was a problem creating your password'
+    ]
+  },
   admin: {
     type: Boolean,
     default: false

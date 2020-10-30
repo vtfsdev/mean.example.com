@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var LocalStrategy = require('passport-local').Strategy;
+var authRouter = require('./routes/auth');
 var apiUsersRouter = require('./routes/api/users');
 var Users = require('./models/users');
 var session = require('express-session');
@@ -68,6 +69,7 @@ passport.deserializeUser(function(user, done){
 });
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/auth', apiAuthRouter);

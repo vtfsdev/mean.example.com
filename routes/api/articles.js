@@ -2,7 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Articles = require('../../models/articles');
 
-router.get('/', function(req, res, next) {});
+router.get('/', function(req, res, next) {
+    res.json({success: true});
+});
+
+
+
 
 router.get('/:articleId', function(req,res){});
 

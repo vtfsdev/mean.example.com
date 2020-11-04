@@ -1,17 +1,17 @@
 extends ../layout
 
-block content
-
-  h1 Content Management System
-
-  div#app
-
-  script(src='/dist/js/articles.app.min.js')
-
 //- block content
-//-   article
-//-     h1= article.title
-//-     div
-//-       - var date = new Date(article.published).toISOString().slice(0, 19).replace('T', ' ');
-//-       small Posted: #{date}
-//-     div!= article.body
+
+//-   h1 Content Management System
+
+//-   div#app
+
+//-   script(src='/dist/js/articles.app.min.js')
+
+block content
+  article
+    h1= article.title
+    div
+      - var date = new Date(article.published).toISOString().slice(0, 19).replace('T', ' ');
+      small Posted: #{date}
+    div!= article.body

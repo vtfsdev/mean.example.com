@@ -11,10 +11,16 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
-
-
-router.get('/:articleId', function(req,res){});
+router.get('/:articleId', function(req,res){
+  
+    var articleId = req.params.articleId;
+     Articles.findOne({'_id':articleId}, function(err, article){
+       if(err){
+        return res.json({'success':false, 'error': err});
+      }
+       return res.json({'success':true, 'user': article});
+     });
+});
 
 router.post('/', function(req, res) {});
 

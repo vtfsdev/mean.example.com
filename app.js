@@ -5,16 +5,20 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var config = require('./config.dev');
 var mongoose = require('mongoose');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var LocalStrategy = require('passport-local').Strategy;
+var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+var usersRouter = require('./routes/users');
+var articlesRouter = require('./routes/articles');
+var apiAuthRouter = require('./routes/api/auth');
 var apiUsersRouter = require('./routes/api/users');
+var apiArticlesRouter = require('./routes/api/articles');
 var Users = require('./models/users');
+var Articles = require('./models/articles');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
-var apiAuthRouter = require('./routes/api/auth');
+const { TooManyRequests } = require('http-errors');
 
 var app = express();
 
@@ -121,8 +125,10 @@ app.use(function(req,res,next){
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/api/users', apiUsersRouter);
+app.use('/articles', articlesRouter);
 app.use('/api/auth', apiAuthRouter);
+app.use('/api/users', apiUsersRouter);
+app.use('/api/articles', apiArticlesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

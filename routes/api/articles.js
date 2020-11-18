@@ -18,7 +18,7 @@ router.get('/:articleId', function(req,res){
        if(err){
         return res.json({'success':false, 'error': err});
       }
-       return res.json({'success':true, 'user': article});
+       return res.json({'success':true, 'article': article});
      });
 });
 

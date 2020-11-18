@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:slug', function(req, res, next) {
+  console.log('helloslug');
   res.render('articles/view', { title: 'Article View' });
 });
 
